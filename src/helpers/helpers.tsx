@@ -41,3 +41,8 @@ export function getErrorMessage(error: unknown): string {
     }
     return 'An unknown error occurred';
 }
+
+export function validateEmail(email: string): boolean {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
+}   
