@@ -1,4 +1,3 @@
-import { register } from 'module';
 import {api} from './client';
 
 export interface AuthResponse {

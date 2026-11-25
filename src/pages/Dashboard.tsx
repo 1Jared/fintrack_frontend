@@ -31,6 +31,34 @@ export const Dashboard: REACT.FC = () => {
      });
      const [formErrors, setFormErrors] = useState <Record<string, string>>({});
       const [isSubmitting, setIsSubmitting] = useState(false);
-      const [deleteConfirm, setDeleteConfirm] = useState <string, null>(null);
+      const [deleteConfirm, setDeleteConfirm] = useState <string | null>(null);
+      const [isDeleting, setIsDeleting] = useState(false);
+
+      useEffect(() => {
+        loadPortfolios();
+      },[]);
+
+      const loadPortfolios = async () => {
+        setIsLoading(true);
+        try{
+            const response = await portfolioAPI.list();
+            setPortfolios(response.data);
+            setError('');
+
+        }catch(err){
+            setError(getErrorMessage(err));
+        }finally{
+            setIsLoading(false);
+        }
+      };
+
+
+      const validateForm = () : boolean => {
+        const errors: Record<string, string> = {};
+        if(!form.name.trim()) errors.name = "Portfolio name is required";
+        if(!form.client_name.trim()) errors.name = "Client name is required";
+        setFormErrors(errors);
+        return Object.keys(errors).length === 0;
+      };
 
 }
