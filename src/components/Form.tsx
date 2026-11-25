@@ -1,7 +1,7 @@
 import React from 'react';
 import clsx from 'clsx';
 
-const fieldClasses = (error?: string, className?: string ) => (
+const fieldClasses = (error?: string , className?: string) => (
     clsx(
         'w-full px-4 py-2.5 bg-white border rounded-xl text-gray-900 placeholder-gray-400 shadow-sm transition',
         'focys:outline-none focus:ring-4 disabled:bg-gray-50 disabled:text-gray-500',
