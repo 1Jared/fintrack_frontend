@@ -1,5 +1,5 @@
 import Reaxt from 'react';
-import { Navigate} from 'react-router-dom';
+import { Navigate } from 'react-router-dom';
 import { useAuthStore } from '../store/auth';
 
 interface ProtectedRouteProps {
