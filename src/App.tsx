@@ -1,4 +1,7 @@
-import { useState } from 'react'
+
+import React, { useEffect } from 'react';
+import {BrowserRouter, Routes, Route, Navigate} from 'react-router-dom';
+import {AuthStore} from '.,/store/auth';
 import heroImg from './assets/hero.png'
 import reactLogo from './assets/react.svg'
 import viteLogo from './assets/vite.svg'
