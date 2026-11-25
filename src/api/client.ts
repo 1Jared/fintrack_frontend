@@ -1,4 +1,4 @@
-import axios from 'axios';
+import axios, { type AxiosError, type AxiosResponse } from 'axios';
 
 const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:8080';
 
@@ -20,9 +20,10 @@ api.interceptors.request.use((config) => {
 
 //Hanndle responses
 api.interceptors.response.use(
-    (response) => response,
-    (error) => {
-        if (error.response && error.response.status === 401) {
+    (response: AxiosResponse) => response,
+    (error: unknown) => {
+        const axiosError = error as AxiosError;
+        if (axios.isAxiosError(axiosError) && axiosError.response?.status === 401) {
             // Handle unauthorized access, e.g., redirect to login page
             localStorage.removeItem('token');
             localStorage.removeItem('email');
