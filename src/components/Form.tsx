@@ -4,7 +4,7 @@ import clsx from 'clsx';
 const fieldClasses = (error?: string , className?: string) => (
     clsx(
         'w-full px-4 py-2.5 bg-white border rounded-xl text-gray-900 placeholder-gray-400 shadow-sm transition',
-        'focys:outline-none focus:ring-4 disabled:bg-gray-50 disabled:text-gray-500',
+        'focus:outline-none focus:ring-4 disabled:bg-gray-50 disabled:text-gray-500',
         error ? 'border-red-400 focus:border-red-500 focus:ring-red-100' : 'border-gray-200 hover:border-gray-300 focus:border-primary focus:ring-primary-100',
         className
     )
@@ -65,7 +65,7 @@ interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
 }
 
 export const Button: React.FC<ButtonProps> = ({variant = 'primary', size = 'md', isLoading=false, children, className, ...props}) => {
-    const baseClasses = 'inline-flex items-center justify-center gap-2 font-semibold rounded-xl transition-all foucis:outline-none focus:ring-4 disabled:cursor-not-allowed disabled:opacity-60';
+    const baseClasses = 'inline-flex items-center justify-center gap-2 font-semibold rounded-xl transition-all focus:outline-none focus:ring-4 disabled:cursor-not-allowed disabled:opacity-60';
     const variantClasses = {
         primary: 'bg-primary text-white hover:bg-primary-600 focus:ring-primary-100',
         secondary: 'bg-gray-100 text-gray-900 hover:bg-gray-200 focus:ring-gray-100',

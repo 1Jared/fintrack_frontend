@@ -1,22 +1,21 @@
 import { api } from './client';
-import { portfolioAPI } from './portfolios';
-
 export interface Transaction {
-    id: string;
+    id: number;
+    portfolioId: number;
     instrument: string;
     type: 'BUY' | 'SELL';
     quantity: number;
-    unit_price: number ;
-    trade_date : string;
-    created_at: string;
+    unitPrice: number ;
+    tradeDate : string;
+    createdAt: string;
 }
 
 export interface CreateTransactionRequest {
     instrument: string;
     type: 'BUY' | 'SELL';
     quantity : number;
-    unit_price : number ;
-    trade_date: string
+    unitPrice : number ;
+    tradeDate: string
 }
 
 export const transactionAPI = {
@@ -24,8 +23,8 @@ export const transactionAPI = {
         api.get<Transaction[]>(`/api/portfolios/${portfolioId}/transactions`),
 
     create: (portfolioId: string, data: CreateTransactionRequest)=>
-        api.post<Transaction>(`/api/[portfolios/${portfolioId}/transactions`, data),
+        api.post<Transaction>(`/api/portfolios/${portfolioId}/transactions`, data),
 
-    delete:(transactionId: string)=>
+    delete:(transactionId: number)=>
         api.delete(`/api/transactions/${transactionId}`)
 }

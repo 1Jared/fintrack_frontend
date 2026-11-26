@@ -24,10 +24,11 @@ api.interceptors.response.use(
     (error: unknown) => {
         const axiosError = error as AxiosError;
         if (axios.isAxiosError(axiosError) && axiosError.response?.status === 401) {
-            // Handle unauthorized access, e.g., redirect to login page
             localStorage.removeItem('token');
             localStorage.removeItem('email');
-            window.location.href = '/login';
+            if (!axiosError.config?.url?.startsWith('/api/auth/')) {
+                window.location.href = '/login';
+            }
         }
         return Promise.reject(error);
     }

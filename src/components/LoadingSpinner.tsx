@@ -18,7 +18,7 @@ export const LoadingSpinner: React.FC<LoadingSpinnerProps> = ({ size = 'medium',
 
     if (fullPage) {
         return (
-            <div className="flex items-center justify-center min-h-screen bg-gradoent-to-br from-primary-50/60 to-white">
+            <div className="flex items-center justify-center min-h-screen bg-gradient-to-br from-primary-50/60 to-white">
                 {spinner}
             </div>
         );

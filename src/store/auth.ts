@@ -13,7 +13,11 @@ export const useAuthStore = create<AuthStore>((set) => ({
     token : null,
     email : null,
     isAuthenticated : false,
-    setAuth : (token, email) => set({token, email, isAuthenticated: true}),
+    setAuth : (token, email) => {
+        localStorage.setItem('token', token);
+        localStorage.setItem('email', email);
+        set({token, email, isAuthenticated: true});
+    },
     clearAuth : () => set({token: null, email: null, isAuthenticated: false}),
     initFromStorage : () => {
         const token = localStorage.getItem('token');

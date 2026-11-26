@@ -10,7 +10,7 @@
 
 @layer components {
   .card{
-    @apply bg-white rounded-2x1 border border-gray-100 shadow-card;
+    @apply bg-white rounded-2xl border border-gray-100 shadow-card;
   }
 }
 
